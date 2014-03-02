@@ -38,6 +38,11 @@ RSpec.configure do |config|
   # Include the FactoryGirl syntax
   config.include FactoryGirl::Syntax::Methods
 
+  # Devise helpers
+  config.include Devise::TestHelpers, type: :controller
+
+  config.extend ControllerMacros, type: :controller
+
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
