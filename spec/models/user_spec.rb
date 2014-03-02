@@ -19,4 +19,14 @@ describe User do
         User.legacy_password(subject.password).should eq(subject.encrypted_password)
       end
     end
+
+    describe "#valid_password?" do
+      it "converts legacy password" do
+        old_password = subject.encrypted_password
+
+        subject.valid_password?(subject.password).should be_true
+        subject.reload.encrypted_password.should_not eq(old_password)
+      end
+    end
+  end
 end
